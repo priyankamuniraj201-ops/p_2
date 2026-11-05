@@ -48,32 +48,30 @@ export function initPortfolioEffects(): () => void {
 
   // Numbers count up the first time they scroll into view. The HTML keeps the final value.
   const counters = document.querySelectorAll<HTMLElement>("[data-count]");
-  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    const rafs = new Set<number>();
-    const countIo = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (!e.isIntersecting) return;
-        countIo.unobserve(e.target);
-        const el = e.target as HTMLElement;
-        const end = Number(el.dataset["count"]), suffix = el.dataset["suffix"] ?? "";
-        el.textContent = end + suffix;
-        el.style.minWidth = `${el.getBoundingClientRect().width}px`; // no text reflow while counting
-        const start = performance.now();
-        const step = (now: number) => {
-          const t = Math.min(1, (now - start) / 1600);
-          el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3))) + suffix;
-          if (t < 1) rafs.add(requestAnimationFrame(step));
-          else el.style.minWidth = "";
-        };
-        rafs.add(requestAnimationFrame(step));
-      });
-    }, { threshold: 0.8 });
-    counters.forEach((el) => {
-      el.textContent = `0${el.dataset["suffix"] ?? ""}`;
-      countIo.observe(el);
+  const rafs = new Set<number>();
+  const countIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      countIo.unobserve(e.target);
+      const el = e.target as HTMLElement;
+      const end = Number(el.dataset["count"]), suffix = el.dataset["suffix"] ?? "";
+      el.textContent = end + suffix;
+      el.style.minWidth = `${el.getBoundingClientRect().width}px`; // no text reflow while counting
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - start) / 1600);
+        el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3))) + suffix;
+        if (t < 1) rafs.add(requestAnimationFrame(step));
+        else el.style.minWidth = "";
+      };
+      rafs.add(requestAnimationFrame(step));
     });
-    cleanups.push(() => { countIo.disconnect(); rafs.forEach(cancelAnimationFrame); });
-  }
+  }, { threshold: 0.8 });
+  counters.forEach((el) => {
+    el.textContent = `0${el.dataset["suffix"] ?? ""}`;
+    countIo.observe(el);
+  });
+  cleanups.push(() => { countIo.disconnect(); rafs.forEach(cancelAnimationFrame); });
 
   const toggle = document.getElementById("product-toggle");
   const panel = document.getElementById("product-work") as HTMLElement | null;

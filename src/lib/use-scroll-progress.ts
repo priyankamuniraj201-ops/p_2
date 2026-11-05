@@ -11,7 +11,6 @@ export function useScrollProgress<T extends HTMLElement>(mode: "pin" | "pass" = 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const trail = matchMedia("(prefers-reduced-motion: reduce)").matches ? 0.001 : TRAIL_MS;
     const target = () => {
       const r = el.getBoundingClientRect();
       const p = mode === "pin"
@@ -25,7 +24,7 @@ export function useScrollProgress<T extends HTMLElement>(mode: "pin" | "pass" = 
     const tick = (now: number) => {
       const t = target();
       if (t === cur) { raf = 0; return; } // off screen or settled: stop the loop
-      cur += (t - cur) * (1 - Math.exp(-Math.min(now - last, 50) / trail));
+      cur += (t - cur) * (1 - Math.exp(-Math.min(Math.max(now - last, 0), 50) / TRAIL_MS));
       if (Math.abs(t - cur) < 0.0004) cur = t;
       last = now;
       write(cur);

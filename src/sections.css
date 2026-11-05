@@ -71,10 +71,6 @@
 .ft-row a { color: var(--muted); text-decoration: none; }
 .ft-row a:hover { color: var(--text); }
 
-@media (prefers-reduced-motion: reduce) {
-  .reveal [style*="--i"], .wk-img, .wk-img img { transition: none !important; opacity: 1; transform: none; clip-path: none; }
-}
-
 /* ---------- Hero motion: text always readable, scroll drives depth ---------- */
 .hm { height: 220vh; position: relative; --p: 0; }
 .hm-stage { position: sticky; top: 0; height: 100vh; display: flex; align-items: center; overflow: hidden; }
@@ -173,7 +169,7 @@
 /* ---------- Experience timeline ---------- */
 .xt { --p: 0; }
 .xt-list { position: relative; }
-.xt-line { position: absolute; left: calc(220px + 7px); top: 0; bottom: 0; width: 2px; background: var(--line); }
+.xt-line { position: absolute; left: calc(220px + 36px + 7px); top: 0; bottom: 0; width: 2px; background: var(--line); }
 .xt-line i { position: absolute; inset: 0; background: var(--green); transform-origin: top; transform: scaleY(clamp(0, (var(--p) - .2) * 2.2, 1)); }
 .xt-item { display: grid; grid-template-columns: 220px 16px 1fr; gap: 0 36px; padding: 0 0 56px; align-items: start; }
 .xt-date b { display: block; font: 400 clamp(56px, 7vw, 96px)/.9 var(--serif); color: var(--text); letter-spacing: -.03em; }
@@ -236,12 +232,6 @@
 @media (max-width: 860px) { .cg-detail, .sw-detail { left: 6vw; right: 6vw; width: auto; top: 12vh; transform: none; } .sw-toy { width: 60vw; } }
 .sw-note i { font-style: normal; font-size: .8em; }
 
-@media (prefers-reduced-motion: reduce) {
-  .hm-w > span, .hm .hero-portrait, .hm .hero .intro { animation: none !important; transform: none !important; }
-  .hm, .cg, .sw { height: auto; } .hm-stage, .cg-stage, .sw-stage { position: relative; }
-  .cg, .sw { --p: 1 !important; }
-}
-
 /* ================= Round 7: consistent landing (description left, product right) ================= */
 .kr .kr-object { transform: translate(calc(var(--land) * 22vw), calc(var(--morph) * 12vh - var(--land) * 8vh)) scale(calc(1 - var(--land) * .24)) !important; }
 .kr-glow { transform: translateX(calc(var(--land) * 22vw)); }
@@ -279,7 +269,7 @@ html, body { overflow-x: clip; } /* clip, not hidden: hidden would break the sti
 .fd-row { padding-top: 100px; }
 .xt-item { padding-bottom: 28px; }
 .rb { padding: 18px 0; }
-@media (prefers-reduced-motion: no-preference) { .hm { height: 170vh; } }
+.hm { height: 170vh; }
 .chapter { padding-bottom: clamp(32px, 4vw, 56px); padding-block-end: clamp(32px, 4vw, 56px); }
 .quote { margin: 28px 0 0; max-width: 34ch; font-size: clamp(24px, 2.8vw, 36px); }
 .features { margin-top: 24px; }
@@ -295,7 +285,7 @@ html, body { overflow-x: clip; } /* clip, not hidden: hidden would break the sti
 .kr { --l: clamp(0, (var(--p) - .74) / .16, 1); }
 .cg { --l: clamp(0, (var(--p) - .76) / .14, 1); }
 .sw { --l: clamp(0, (var(--p) - .74) / .16, 1); }
-@media (prefers-reduced-motion: no-preference) { .kr { height: 400vh; } .cg { height: 440vh; } .sw { height: 340vh; } }
+.kr { height: 400vh; } .cg { height: 440vh; } .sw { height: 340vh; }
 
 /* Swara lands beside its description rather than at the far edge of the screen */
 @media (min-width: 861px) {
@@ -335,8 +325,6 @@ html, body { overflow-x: clip; } /* clip, not hidden: hidden would break the sti
 .ct-rail span { position: absolute; left: 14px; top: calc(var(--sp, 0) * 100%); transform: translateY(-50%); font: 600 10px/1 Manrope, sans-serif;
   letter-spacing: .18em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
 @media (max-width: 860px) { .ct-rail { display: none; } }
-@media (prefers-reduced-motion: reduce) { .ct-bg svg, .ct-blob { transform: none; } }
-
 /* ================= Phones ================= */
 @media (max-width: 860px) {
   .kr { height: 380vh; } .cg { height: 400vh; } .sw { height: 340vh; }

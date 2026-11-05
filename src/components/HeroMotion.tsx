@@ -43,7 +43,7 @@ export function Ribbon() {
     const tick = () => {
       const d = scrollY - last; last = scrollY;
       v += (d * 0.25 - v) * 0.12;
-      x += (hover ? 0.12 : 0.6) + Math.abs(v);
+      x += (reduce ? 0 : hover ? 0.12 : 0.6) + Math.abs(v);
       const w = r0.scrollWidth / 2;
       const o = x % w;
       r0.style.transform = `translateX(${-o}px)`;
@@ -51,7 +51,7 @@ export function Ribbon() {
       el.style.setProperty("--skew", `${Math.max(-8, Math.min(8, v * 0.6))}deg`);
       raf = requestAnimationFrame(tick);
     };
-    if (!reduce) tick();
+    tick();
     return () => { cancelAnimationFrame(raf); el.removeEventListener("mouseenter", enter); el.removeEventListener("mouseleave", leave); };
   }, []);
   const row = (k: string) => [...words, ...words].map((w, i) => (
