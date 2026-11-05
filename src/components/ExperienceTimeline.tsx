@@ -13,7 +13,7 @@ export function ExperienceTimeline() {
     <section ref={ref} className="ps-block wrap xt" id="experience" aria-labelledby="xp-h">
       <header className="ps-head reveal">
         <span className="ps-eyebrow">Professional experience</span>
-        <h2 id="xp-h">Two internships, <em>two kinds of making.</em></h2>
+        <h2 id="xp-h">Internships /<em> Industrial Experience</em></h2>
       </header>
       <div className="xt-list">
         <div className="xt-line"><i /></div>

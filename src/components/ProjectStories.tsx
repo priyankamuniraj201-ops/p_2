@@ -1,6 +1,6 @@
 import { useScrollProgress } from "@/lib/use-scroll-progress";
-import chair from "@/assets/cozy-chair.png";
-import toy from "@/assets/swara-toy.png";
+import chair from "@/assets/cozy-chair.webp";
+import toy from "@/assets/swara-toy.webp";
 
 export function CozyGrowMechanism({ detail }: { detail: string }) {
   const ref = useScrollProgress<HTMLElement>("pass");
@@ -24,7 +24,7 @@ export function SwaraNotes({ detail }: { detail: string }) {
       <div className="sw-stage">
         <div className="sw-head">
           <span className="kr-eyebrow">03 — Play · Swara</span>
-          <h2 className="cg-title">Pick a note, <em>strike it, hear it.</em></h2>
+          <h2 className="cg-title">A musical scale <em>you can hold.</em></h2>
         </div>
         <div className="sw-notes">
           {swars.map((n, i) => (

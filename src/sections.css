@@ -211,15 +211,20 @@
 .sw-toy { position: absolute; bottom: 12vh; left: 0; width: min(36vw, 440px); transform: translateX(calc(-40vw + var(--m) * 48vw)) rotate(calc(sin(var(--m) * 40rad) * 1.5deg)); transform-origin: 60% 95%; }
 .sw-toy img { width: 100%; display: block; }
 .sw-notes { position: absolute; inset: 0; pointer-events: none; }
-.sw-note { --at: calc(.1 + var(--n) * .1); --t: clamp(0, (var(--m) - var(--at)) * 5, 1);
-  position: absolute; left: calc(-40vw + var(--at) * 48vw + min(18vw, 220px)); bottom: calc(12vh + min(20vw, 240px));
-  display: flex; align-items: center; gap: 4px; font: 400 clamp(28px, 3.2vw, 46px)/1 var(--serif); color: var(--c);
-  opacity: min(1, calc(var(--t) * 4)); transform: translate(-50%, calc(var(--t) * -15vh)) rotate(calc((var(--n) - 3.5) * 5deg)) scale(calc(.4 + var(--t) * .8)); }
+.sw-note { --at: calc(.08 + var(--n) * .09); --t: clamp(0, (var(--m) - var(--at)) * 6, 1);
+  position: absolute; left: calc(6vw + var(--n) * 5.4vw); bottom: calc(16vh + var(--n) * 3.2vh);
+  display: flex; align-items: center; gap: 4px; font: 400 clamp(32px, 3.8vw, 60px)/1 var(--serif); color: var(--c);
+  opacity: var(--t); transform: translateY(calc((1 - var(--t)) * 40px)) scale(calc(.7 + var(--t) * .3)); }
 .sw-head { opacity: calc(1 - var(--land)); }
 .sw-notes { opacity: calc(1 - var(--land)); }
 .sw-detail { right: 5vw; top: 50%; width: min(48vw, 640px); opacity: var(--land); transform: translate(calc((1 - var(--land)) * 60px), -55%); }
 @media (max-width: 860px) { .sw-detail { left: 6vw; right: 6vw; width: auto; top: 12vh; transform: none; } .sw-toy { width: 60vw; } }
-.sw-note i { font-style: normal; font-size: .8em; }
+.sw-note:nth-child(n+7) { margin-left: 2.4vw; } /* room after the wider "Dha" */
+.sw-note i { font-style: normal; font-size: .6em; opacity: .8; }
+@media (max-width: 860px) {
+  .sw-note { left: calc(4vw + var(--n) * 11.6vw); bottom: calc(8svh + var(--n) * 1.6svh); font-size: 21px; margin-left: 0 !important; }
+  .sw-note i { display: none; }
+}
 
 /* ================= Round 7: consistent landing (description left, product right) ================= */
 .kr .kr-object { transform: translate(calc(var(--land) * 22vw), calc(var(--morph) * 12vh - var(--land) * 8vh)) scale(calc(1 - var(--land) * .24)) !important; }
@@ -245,12 +250,8 @@ html, body { overflow-x: clip; } /* clip, not hidden: hidden would break the sti
 .stats { display: block; max-width: 25em; margin: 0 0 8px; font: 350 clamp(26px, 3.1vw, 42px)/1.28 var(--serif); letter-spacing: -.015em; color: var(--text); }
 .stats b { display: inline-block; font: inherit; color: var(--green); font-variant-numeric: tabular-nums lining-nums; }
 
-/* Process: hairline rows instead of a four-column card rail */
-.chapter .steps { display: block; margin: 28px 0 0; border-top: 1px solid var(--line); }
-.chapter .step { display: grid; grid-template-columns: 44px minmax(110px, 180px) 1fr; gap: 0 16px; align-items: baseline; padding: 13px 0; border-bottom: 1px solid var(--line); }
-.step h3 { margin: 0; font-size: 22px; }
-.step p { max-width: 68ch; }
-@media (max-width: 620px) { .chapter .step { grid-template-columns: 36px 1fr; } .step p { grid-column: 2; margin-top: 4px; } }
+/* Process rail: just closer to what sits above it */
+.chapter .steps { margin-top: 40px; }
 
 /* Spacing */
 .ps-block { padding: clamp(44px, 5.5vw, 80px) 0; }
@@ -325,7 +326,7 @@ html, body { overflow-x: clip; } /* clip, not hidden: hidden would break the sti
   .kr-glow { transform: none; }
   .kr-detail, .sw-detail { left: 6vw; right: 6vw; width: auto; top: auto; bottom: 5svh; transform: translateY(calc((1 - var(--land)) * 30px)); }
   .pd .chapter-title h2 { font-size: 34px; } .pd .chapter-title p { font-size: 14px; }
-  .sw-toy { width: 62vw; bottom: auto; top: 18svh; transform: translateX(calc(60vw - var(--m) * 78vw)); }
+  .sw-toy { width: 62vw; bottom: auto; top: 30svh; transform: translate(calc(60vw - var(--m) * 78vw), calc(var(--land) * -14svh)); }
   .hm-stage { min-height: 100svh; }
   .hm-content * { transition-duration: .6s; }
   .rb { transform: none; }

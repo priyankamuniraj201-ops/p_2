@@ -1,6 +1,6 @@
 import { useScrollProgress } from "@/lib/use-scroll-progress";
-import peanut from "@/assets/peanut-shell.png";
-import chair from "@/assets/kosha-chair.png";
+import peanut from "@/assets/peanut-shell.webp";
+import chair from "@/assets/kosha-chair.webp";
 
 /**
  * Scroll-pinned intro: a peanut shell cracks along its seam, the halves

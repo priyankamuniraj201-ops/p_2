@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useScrollProgress } from "@/lib/use-scroll-progress";
-import kosha from "@/assets/kosha-chair.png";
-import cozy from "@/assets/cozy-chair.png";
-import swara from "@/assets/swara-toy.png";
+import kosha from "@/assets/kosha-chair.webp";
+import cozy from "@/assets/cozy-chair.webp";
+import swara from "@/assets/swara-toy.webp";
 
 /** Pinned hero: text always stays readable; scroll fills the intro word by word,
  *  a giant outlined word slides behind, the portrait opens up and the three

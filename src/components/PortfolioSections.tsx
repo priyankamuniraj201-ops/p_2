@@ -1,7 +1,7 @@
 import { siBlender, siFigma, siAutodesk, siRhinoceros } from "simple-icons";
-import swara from "@/assets/Swara.png";
-import cozy from "@/assets/Cozygrow.png";
-import kosha from "@/assets/Kosha.png";
+import swara from "@/assets/Swara.webp";
+import cozy from "@/assets/Cozygrow.webp";
+import kosha from "@/assets/Kosha.webp";
 
 type Tool = { name: string; role: string; icon: React.ReactNode };
 
